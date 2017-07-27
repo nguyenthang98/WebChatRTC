@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Home</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<!-- chat panel area -->
+			<div class="col-xs-12 col-md-8">
+				<div class="row">
+					<!-- my panel -->
+					<div class="col-xs-12 col-sm-6">
+						<div class="panel panel-primary">
+							<div class="panel-heading">Me - id: <small id="MyID"></small></div>
+							<div class="panel-body" style="height: 300px">
+								<video id="local-video"></video>
+							</div>
+						</div>
+					</div>
+					<!-- peer panel -->
+					<div class="col-xs-12 col-sm-6">
+						<div class="panel panel-primary">
+							<div class="panel-heading">Peer - id: <small id="PeerID"></small></div>
+							<div class="panel-body" style="height: 300px">
+								<video id="peer-video"></video>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<div id='error' class="alert alert-danger fade in hidden">
+							<!-- <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> -->
+							<strong>Error! </strong> All fields are required 
+						</div>
+					</div>
+					<div class="col-xs-12 text-center">
+						<div>
+							<div class="input-group">
+								<input type="text" class="form-control" id="peer" size="50" placeholder="Peer ID" required>
+								<div class="input-group-btn">
+									<button type="button" id="call" size="10" class="btn btn-success">call</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- online panel area -->
+			<div class="col-xs-12 col-md-4">
+				<div class="panel panel-success">
+					<div class="panel-heading">User Online</div>
+					<div class="panel-body">
+						<div class="container-fluid" id="userOnline">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/app.js"></script>
+</body>
+</html>

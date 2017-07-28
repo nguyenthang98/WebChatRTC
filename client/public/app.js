@@ -69,7 +69,7 @@ var handleSocketConnection = function (socket) {
 	})
 };
 
-const option = {audio: false, video: true};
+const option = {audio: true, video: true};
 var openStream = function () {
 	return navigator.mediaDevices.getUserMedia(option);
 }

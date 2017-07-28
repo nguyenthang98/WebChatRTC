@@ -22,20 +22,28 @@ app.get('/',(req,res) =>{
 	res.sendFile(path.join(__dirname,'client','index.html'));
 })
 
+/*Make ID*/
+var makeID = function () {
+  // Math.random should be unique because of its seeding algorithm.
+  // Convert it to base 36 (numbers + letters), and grab the first 9 characters
+  // after the decimal.
+  return Math.random().toString(36).substr(2, 9);
+};
 /*Socket io*/
 var IDarr = [];
 io.on('connection',function (socket) {
-	// console.log('has connection with : ',socket.id);
+	// generate new peer ID
+	socket.peerID = makeID();
 	/*Event handler*/
-	socket.emit('server-send-yourID',socket.id);
-	IDarr.push(socket.id);
+	socket.emit('server-send-yourID',socket.peerID);
+	IDarr.push(socket.peerID);
 	socket.emit('server-send-idList',IDarr);
-	socket.broadcast.emit('server-send-newID',socket.id);
+	socket.broadcast.emit('server-send-newID',socket.peerID);
 
 	socket.on('disconnect',function(){
-		//console.log('missing connection with : ',socket.id);
+		console.log('missing connection with : ',socket.peerID);
 		/*disconnect handler*/
-		IDarr.splice(IDarr.indexOf(socket.id), 1);
+		IDarr.splice(IDarr.indexOf(socket.peerID), 1);
 		io.emit('server-send-newIdList',IDarr);
 	})
 })

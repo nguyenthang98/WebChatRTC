@@ -38,9 +38,10 @@ ConnectPromise.then((connect)=>{
 	myPeerID = id;
 
 	var peer = new Peer(myPeerID, {
-		host: location.hostname,
+		/*host: location.hostname,
 		port: location.port || (location.protocol === 'https:' ? 443 : 80),
-		path: '/peerjs'
+		path: '/peerjs'*/
+		key: 'nuh31xwbve2buik9'
 	});
 	handleSocketConnection(socket);
 	handlePeerConnection(peer);

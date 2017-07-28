@@ -45,7 +45,7 @@ socket.on('server-send-newIdList',(ids) =>{
 })
 
 
-const option = {audio: false, video: /*true*/{width: 300, height: 300}};
+const option = {audio: true, video: /*true*/{width: 300, height: 300}};
 var openStream = function () {
 	return navigator.mediaDevices.getUserMedia(option);
 }
